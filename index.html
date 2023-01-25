@@ -5,14 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
-    <link rel="stylesheet" href="./assets/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles&family=Seymour+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-    <h1>Weather Dashboard</h1>
-    <div id="forecast"></div>
+    <header> 
+        <div class="row">
+            <div class="column column-33"></div>
+            <div class="column column-33">Weather Dashboard</div>
+            <div class="column column-33"></div>
+        </div></header>
+        <div id="hero">
+            <div class="hero-spacer">
+                <div class="row">
+                    <div class="colum column-10"></div>
+                    <div class="column column-80">
+                        <div class="form row">
+                            <label> Search for a City </label>
+                                <div class="form row">
+                                    <input id="search">
+                                </div>                             
+                            </div>
+                                                   
+                            <div>
+                                <h1>5-Day Forecast</h1>
+                                <div class="row column-66" id="forecast"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column column-10"></div>
+                </div>
+            </div>
+        </div>
     <script src="./assets/script.js"></script>
 </body>
 </html>
