@@ -65,7 +65,7 @@ $(document).ready(function () {
       let city = $("<h3>").text(
         data.name + " (" + new Date().toLocaleDateString() + ")"
       );
-      let img = $("<img>").attr(
+      let icon = $("<img>").attr(
         "src",
         "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
       );
@@ -75,8 +75,8 @@ $(document).ready(function () {
       let wind = $("<p>").text("Wind Speed: " + data.wind.speed + " MPH");
       let humid = $("<p>").text("Humidity: " + data.main.humidity + " %");
       let temp = $("<p>").text("Temperature: " + kToF(data.main.temp) + " F");
-      let lon = data.coord.lon;
-      let lat = data.coord.lat;
+      let longitude = data.coord.lon;
+      let latitude = data.coord.lat;
 
       $.ajax({
         type: "GET",
@@ -84,9 +84,9 @@ $(document).ready(function () {
           "https://api.openweathermap.org/data/2.5/uvi?appid=" +
           api +
           "&lat=" +
-          lat +
+          latitude +
           "&lon=" +
-          lon,
+          longitude,
       }).then(function (response) {
         let uvResponse = response.value;
         let btn = $("<span>").addClass("btn").text(uvResponse);
@@ -96,7 +96,7 @@ $(document).ready(function () {
       });
 
       // merge and add to page
-      city.append(img);
+      city.append(icon);
       containerBody.append(city, temp, wind, humid);
       container.append(containerBody);
       $("#today").append(container);
@@ -112,7 +112,7 @@ $(document).ready(function () {
         "&appid=9f112416334ce37769e5c8683b218a0d&units=imperial",
     }).then(function (data) {
       $("#weatherDay")
-        .html('<h4>5-Day Forecast:</h4>')
+        .html('<h3>5-Day Forecast:</h3>')
         .append('<div class="row">');
 
       // 5 Day Forecast
@@ -122,14 +122,14 @@ $(document).ready(function () {
           let fiveDay = $("<h3>").text(
             new Date(data.list[i].dt_txt).toLocaleDateString()
           );
-          let imgFive = $("<img>").attr(
+          let iconFive = $("<img>").attr(
             "src",
             "https://openweathermap.org/img/w/" +
               data.list[i].weather[0].icon +
               ".png"
           );
           let colFive = $("<div>").addClass("weatherDay");
-          let containerFive = $("<div>").addClass("weatherDay");
+          let containerFive = $("<div>").addClass("card bg-primary");
           let containerBodyFive = $("<div>");
           let humidFive = $("<p>").text(
             "Humidity: " + data.list[i].main.humidity + "%"
@@ -140,7 +140,7 @@ $(document).ready(function () {
 
           colFive.append(
             containerFive.append(
-              containerBodyFive.append(fiveDay, imgFive, tempFive, humidFive)
+              containerBodyFive.append(fiveDay, iconFive, tempFive, humidFive)
             )
           );
    
