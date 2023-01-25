@@ -36,7 +36,7 @@ $(document).ready(function () {
 
   //local storage of the last cities searched
   function createRow(text) {
-    let cityList = $("<li>").addClass("list-group-item").text(text);
+    let cityList = $("<li>").addClass("list").text(text);
     $(".local").append(cityList);
   }
 
@@ -70,8 +70,8 @@ $(document).ready(function () {
         "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
       );
 
-      let card = $("<div>");
-      let cardBody = $("<div>");
+      let container = $("<div>");
+      let containerBody = $("<div>");
       let wind = $("<p>").text("Wind Speed: " + data.wind.speed + " MPH");
       let humid = $("<p>").text("Humidity: " + data.main.humidity + " %");
       let temp = $("<p>").text("Temperature: " + kToF(data.main.temp) + " F");
@@ -91,23 +91,15 @@ $(document).ready(function () {
         let uvResponse = response.value;
         let btn = $("<span>").addClass("btn").text(uvResponse);
 
-        if (uvResponse < 3) {
-          btn.addClass("btn-success");
-        } else if (uvResponse < 7) {
-          btn.addClass("btn-warning");
-        } else {
-          btn.addClass("btn-danger");
-        }
-
-        cardBody.append(uvIndex);
-        $("#today .card-body").append(uvIndex.append(btn));
+        containerBody.append(uvIndex);
+        $("#today .container-body").append(uvIndex.append(btn));
       });
 
       // merge and add to page
       city.append(img);
-      cardBody.append(city, temp, wind, humid);
-      card.append(cardBody);
-      $("#today").append(card);
+      containerBody.append(city, temp, wind, humid);
+      container.append(containerBody);
+      $("#today").append(container);
     });
   }
   // function weatherForecast(citySearch)
@@ -120,7 +112,7 @@ $(document).ready(function () {
         "&appid=9f112416334ce37769e5c8683b218a0d&units=imperial",
     }).then(function (data) {
       $("#weatherDay")
-        .html('<h4 class="mt-3">5-Day Forecast:</h4>')
+        .html('<h4>5-Day Forecast:</h4>')
         .append('<div class="row">');
 
       // 5 Day Forecast
@@ -137,8 +129,8 @@ $(document).ready(function () {
               ".png"
           );
           let colFive = $("<div>").addClass("weatherDay");
-          let cardFive = $("<div>").addClass("weatherDay");
-          let cardBodyFive = $("<div>");
+          let containerFive = $("<div>").addClass("weatherDay");
+          let containerBodyFive = $("<div>");
           let humidFive = $("<p>").text(
             "Humidity: " + data.list[i].main.humidity + "%"
           );
@@ -147,8 +139,8 @@ $(document).ready(function () {
           );
 
           colFive.append(
-            cardFive.append(
-              cardBodyFive.append(fiveDay, imgFive, tempFive, humidFive)
+            containerFive.append(
+              containerBodyFive.append(fiveDay, imgFive, tempFive, humidFive)
             )
           );
    
