@@ -128,8 +128,8 @@ $(document).ready(function () {
               data.list[i].weather[0].icon +
               ".png"
           );
-          let colFive = $("<div>").addClass("weatherDay");
-          let containerFive = $("<div>").addClass("card bg-primary");
+          let colFive = $("<div>");
+          let containerFive = $("<div>").addClass("weatherDay");
           let containerBodyFive = $("<div>");
           let humidFive = $("<p>").text(
             "Humidity: " + data.list[i].main.humidity + "%"
