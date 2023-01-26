@@ -109,7 +109,7 @@ $(document).ready(function () {
       url:
         "https://api.openweathermap.org/data/2.5/forecast?q=" +
         citySearch +
-        "&appid=9f112416334ce37769e5c8683b218a0d&units=imperial",
+        "&appid=" + api + "&units=imperial",
     }).then(function (data) {
       $("#weatherDay")
         .html('<h3>5-Day Forecast:</h3>')
